@@ -1,11 +1,12 @@
   <div class="card shadow-lg" style="width: 18rem;">
     <div class="img-wrapper">
-      <img src="assets/images/House.jpeg" class="card-img-top" alt="...">
+      <img *ngIf="property.ImgPath" src="assets/images/{{property.ImgPath}}" class="card-img-top" title={{property.Name}} alt={{property.Name}}>
+      <img *ngIf="!property.ImgPath" src="assets/images/nopropertyimage.jpg" class="card-img-top" title={{property.Name}} alt="No property photo available">
     </div>
     <div class="card-body">
       <h5 class="card-title">{{property.Name}}</h5>
       <p class="card-text">{{property.Description}}</p>
       <p class="card-text">Property Type: {{property.Type}} <br/>Price: {{property.Price | currency:'INR'}}</p>
-      <a href="#" class="btn btn-primary">View Details</a>&nbsp;  <a href="#" class="btn btn-primary">Purchase</a>
+      <a routerLink="/property-detail/{{property.Id}}" class="btn btn-primary">View Details</a>&nbsp;  <a href="#" class="btn btn-primary">Purchase</a>
     </div>
   </div>

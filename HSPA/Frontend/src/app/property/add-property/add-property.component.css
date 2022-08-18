@@ -1,0 +1,12 @@
+div.form-group
+{
+  height: 90px;
+}
+
+.ng-invalid.ng-touched{
+  border-color: red;
+}
+
+.error-block{
+  color: red;
+}

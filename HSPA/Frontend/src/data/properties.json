@@ -1,44 +1,55 @@
 [
   {
     "Id":1,
-    "Type": "House",
+    "Type": "House1",
     "Name": "HSPA1",
     "Description": "Hello, It is a very nice house!",
-    "Price":120000
+    "Price":100000,
+    "SellRent": 1,
+    "ImgPath": "1.jpg"
   },
   {
     "Id":2,
-    "Type": "House",
+    "Type": "House2",
     "Name": "HSPA2",
     "Description": "Hello, It is a very nice house!",
-    "Price":120000
+    "Price":120000,
+    "SellRent": 1,
+    "ImgPath": "2.jpg"
   },
   {
     "Id":3,
-    "Type": "House",
+    "Type": "House3",
     "Name": "HSPA3",
     "Description": "Hello, It is a very nice house!",
-    "Price":120000
+    "Price":140000,
+    "SellRent": 1,
+    "ImgPath": "3.jpg"
   },
   {
     "Id":4,
-    "Type": "House",
+    "Type": "House4",
     "Name": "HSPA4",
     "Description": "Hello, It is a very nice house!",
-    "Price":120000
+    "Price":160000,
+    "SellRent": 2,
+    "ImgPath": "4.jpg"
   },
   {
     "Id":5,
-    "Type": "House",
+    "Type": "House5",
     "Name": "HSPA5",
     "Description": "Hello, It is a very nice house!",
-    "Price":120000
+    "Price":180000,
+    "SellRent": 2,
+    "ImgPath": "5.jpg"
   },
   {
     "Id":6,
-    "Type": "House",
+    "Type": "House6",
     "Name": "HSPA6",
     "Description": "Hello, It is a very nice house!",
-    "Price":120000
+    "Price":200000,
+    "SellRent": 2
   }
 ]
