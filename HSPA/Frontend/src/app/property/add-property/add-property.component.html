@@ -3,84 +3,42 @@
     Add New Property
   </div>
   <div class="card-body">
-    <form (ngSubmit)='onSubmit(Form)' #Form="ngForm">
-      <div class="form-group">
-        <label for="inputpropertyName">Property Name</label>
-        <input type="text" maxlength="50" class="form-control" id="inputpropertyName" #propName="ngModel" placeholder="Property name" ngModel name="Name" required="required" minlength="10">
-        <span class="error-block" *ngIf="!propName.valid && propName.touched">
-          <span *ngIf="propName.errors?.['required']">Please provide property name!</span>
-          <span *ngIf="propName.errors?.['minlength']">Property name should be atleast 10 chanracter long!</span>
+    <form (ngSubmit)='onSubmit()' #Form="ngForm">
+      <!-- <div class="form-group col-12">
+        <input type="radio" id="sell" value="1" name="SellRent" required [ngModel]="SellRent">
+        <label class="m-2">Sell</label>
+
+        <input type="radio" id="rent" value="2" name="SellRent" required [ngModel]="SellRent" >
+        <label class="m-2">Rent</label>
+      </div> -->
+
+      <div class="form-group col-12">
+        <label for="name">Name</label>
+        <input type="text" class="form-control"
+        #propName="ngModel"
+        ngModel name="Name"
+        required
+        minlength="5">
+        <span *ngIf="!propName.valid && propName.touched" class="error-block">
+          <span *ngIf="propName.errors?.['required']">Please provide name</span>
+          <span *ngIf="propName.errors?.['minlength']">Name must be atleast 5 char long</span>
         </span>
       </div>
-      <div class="form-row">
-        <div class="form-group col-md-4">
-          <label for="selectPropertyType">Property Type</label>
-          <select id="selectPropertyType" class="form-control" ngModel name="Type" required="required">
-            <option selected>Choose...</option>
-            <option value="1">Studio Apartment</option>
-            <option value="2">Flat</option>
-            <option value="3">Villa</option>
-            <option value="4">Resort</option>
-            <option value="5">Farmhouse</option>
-            <option value="6">Hotel</option>
-            <option value="7">Office</option>
-            <option value="8">Shop</option>
-            <option value="9">Showroom</option>
-          </select>
-        </div>
-        <div class="form-group col-md-4">
-          <label for="selectSellRent">Sell or Rent?</label>
-          <select id="selectSellRent" class="form-control" ngModel name="SellRent" required="required">
-            <option selected>Choose...</option>
-            <option value="1">Sell</option>
-            <option value="2">Rent</option>
-          </select>
-        </div>
-        <div class="form-group col-md-4">
-          <label for="inputPrice">Price</label>
-          <input type="number" class="form-control" id="inputPrice" ngModel name="Price" required="required">
-        </div>
+
+      <div class="form-group col-12">
+        <label for="type">Type</label>
+        <input type="text" class="form-control" ngModel name="Type">
       </div>
-      <div class="form-group">
-        <label for="propertyDesc">Description</label>
-        <textarea class="form-control" id="propertyDesc" ngModel name="Description" rows="3" required="required"></textarea>
+
+      <div class="form-group col-12">
+        <label for="price">Price</label>
+        <input type="text" class="form-control" ngModel name="Price">
       </div>
-      <div class="form-group">
-        <label for="inputAddress2">Address 2</label>
-        <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
+
+      <div class="form-group col-12">
+        <button type="submit" class="btn btn-primary mr-2">Save</button>
+        <button type="reset" class="btn btn-primary">Cancel</button>
       </div>
-      <div class="form-row">
-        <div class="form-group col-md-4">
-          <label for="inputCity">City</label>
-          <input type="text" class="form-control" id="inputCity">
-        </div>
-        <div class="form-group col-md-4">
-          <label for="selectState">State</label>
-          <select id="selectState" class="form-control">
-            <option value="0" selected>Choose...</option>
-            <option value="1">Delhi</option>
-            <option value="2">Uttar Pradesh</option>
-            <option value="3">Bihar</option>
-            <option value="4">Haryana</option>
-            <option value="5">Punjab</option>
-            <option value="6">Madhya Pradesh</option>
-            <option value="7">Uttrakhand</option>
-            <option value="8">Rajsthan</option>
-            <option value="9">Himachal Pradesh</option>
-            <option value="10">Jahrkhand</option>
-          </select>
-        </div>
-        <div class="form-group col-md-4">
-          <label for="inputZip">Zip</label>
-          <input type="text" class="form-control" id="inputZip">
-        </div>
-      </div>
-      <button type="submit" [disabled]="!Form.valid" class="btn btn-primary mr-2">Save</button>
-      <button type="reset" class="btn">Cancel</button>
     </form>
   </div>
-  <div class="card-footer">
-    &nbsp;
-  </div>
 </div>
-&nbsp;
