@@ -5,7 +5,7 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarScroll">
-      <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+      <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 200px;">
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" [routerLinkActiveOptions]="{exact:true}" routerLinkActive="active" routerLink="/">Buy</a>
         </li>
@@ -18,12 +18,33 @@
       </ul>
       <div>
         <ul class="nav navbar-nav">
-          <li class="nav-item">
+          <li *ngIf="!loggedIn()" class="nav-item">
             <a class="nav-link" routerLinkActive="active" routerLink="user-registration">Register</a>
           </li>
-          <li class="nav-item">
+          <li *ngIf="!loggedIn()" class="nav-item">
             <a class="nav-link" routerLinkActive="active" routerLink="user-login">Login</a>
           </li>
+          <!-- <li *ngIf="loggedIn()" class="nav-item">
+            <a class="nav-link" (click)="onLogout()">Logout</a>
+          </li> -->
+          <div *ngIf="loggedIn()" class="dropdown mr-5" dropdown>
+            <!-- <a href="#" class="dropdown-toggle text-light" dropdownToggle (click)="true">Welcome, {{loggedInUser}}</a>
+            <div class="dropdown-menu" *dropdownmenu>
+              <a href="#" class="dropdown-item">View Dashboard</a>
+              <a href="#" class="dropdown-item">My Profile</a>
+              <a href="#" class="dropdown-item">Change Password</a>
+              <a (click)="onLogout()" class="dropdown-item">Logout</a>
+            </div> -->
+            <a class="nav-link dropdown-toggle text-light" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Welcome, {{loggedIn()}}
+            </a>
+            <ul class="dropdown-menu">
+              <li><a href="#" class="dropdown-item">View Dashboard</a></li>
+              <li><a href="#" class="dropdown-item">My Profile</a></li>
+              <li><a href="#" class="dropdown-item">Change Password</a></li>
+              <li><a (click)="onLogout()" class="dropdown-item">Logout</a></li>
+            </ul>
+          </div>
         </ul>
       </div>
     </div>

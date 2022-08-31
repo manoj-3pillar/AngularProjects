@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { User } from 'src/app/model/user';
+import { AlertifyService } from 'src/app/services/alertify.service';
+import { UserServiceService } from 'src/app/services/user-service.service';
 import CustomValidation from 'src/app/shared/utilities/customValidation';
+
 
 @Component({
   selector: 'app-user-register',
@@ -11,9 +15,10 @@ import CustomValidation from 'src/app/shared/utilities/customValidation';
 export class UserRegisterComponent implements OnInit {
 
   registerationForm: FormGroup;
-
+  user: User;
   submitted = false;
-  constructor(private fb: FormBuilder) {}
+
+  constructor(private fb: FormBuilder, private userService: UserServiceService, private alertifyService: AlertifyService) {}
   ngOnInit(): void {
     // this.registerationForm = new FormGroup(
     //   {
@@ -44,14 +49,29 @@ export class UserRegisterComponent implements OnInit {
     });
   }
 
+  mapUserData() : User {
+    return this.user = {
+      fullname: this.fullname.value,
+      email: this.email.value,
+      password: this.password.value,
+      mobile: this.mobile.value
+    };
+  }
+
   onSubmit(){
     //debugger;
-    console.log(this.registerationForm);
-    this.submitted = true;
+    console.log(this.registerationForm.value);
+
     if (this.registerationForm.invalid) {
+      this.alertifyService.error('Kindly provide the required fields!');
       return;
     }
-    console.log(JSON.stringify(this.registerationForm.value, null, 2));
+
+    this.submitted = true;
+    //this.user = Object.assign(this.user, this.registerationForm.value);
+    this.userService.addUser(this.mapUserData());
+    this.onReset();
+    this.alertifyService.success('Congrats, You are successfully registered!');
   }
   onReset(){
     this.submitted = false;
