@@ -2,7 +2,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { HousingService } from 'src/app/services/housing.service';
-import { IProperty } from '../iproperty';
+import { Property } from 'src/app/model/property';
 
 @Component({
   selector: 'app-property-list',
@@ -12,7 +12,7 @@ import { IProperty } from '../iproperty';
 export class PropertyListComponent implements OnInit {
 
   SellRent = 1;
-  PropertyList: IProperty[];
+  PropertyList: Property[];
 
   constructor(private route: ActivatedRoute, private housingService: HousingService) { }
 
@@ -22,11 +22,9 @@ export class PropertyListComponent implements OnInit {
     }
    this.housingService.getAllPropertyList(this.SellRent).subscribe(
       data => {
-        this.PropertyList = data,
+        this.PropertyList = data;
         console.log(data);
-        console.log(this.route.snapshot.url.toString());
       }, error => console.log(error)
     );
   }
-
 }

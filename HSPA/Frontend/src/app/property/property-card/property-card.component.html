@@ -1,12 +1,22 @@
-  <div class="card shadow-lg" style="width: 18rem;">
-    <div class="img-wrapper">
-      <img *ngIf="property.ImgPath" src="assets/images/{{property.ImgPath}}" class="card-img-top" title={{property.Name}} alt={{property.Name}}>
-      <img *ngIf="!property.ImgPath" src="assets/images/nopropertyimage.jpg" class="card-img-top" title={{property.Name}} alt="No property photo available">
-    </div>
-    <div class="card-body">
-      <h5 class="card-title">{{property.Name}}</h5>
-      <p class="card-text">{{property.Description}}</p>
-      <p class="card-text">Property Type: {{property.Type}} <br/>Price: {{property.Price | currency:'INR'}}</p>
-      <a routerLink="/property-detail/{{property.Id}}" class="btn btn-primary">View Details</a>&nbsp;  <a href="#" class="btn btn-primary">Purchase</a>
-    </div>
+<div class="card shadow-lg">
+  <div class="img-wrapper">
+    <img *ngIf="property.ImgPath" src="../../../assets/images/{{property.Id}}.jpg" class="card-img-top" title={{property.Name}} alt={{property.Name}}>
+    <img *ngIf="!property.ImgPath" src="../../../assets/images/nopropertyimage.jpg" class="card-img-top" title={{property.Name}} alt="No property photo available">
   </div>
+  <div class="card-body p-1">
+    <h1 class="mb-0">{{property.BHK}}</h1>
+    in {{property.Name}}
+    <span *ngIf="property.Name">,</span>
+    {{property.City}}
+
+    <h6 class="mt-2">{{property.FType}}
+    <span *ngIf="property.FType !== 0">Furnished</span> | Ready to Move</h6>
+
+    <hr class="mt-0 mb-2">
+
+    <h6 class="mb-0">Price: <span class="font-highlight">{{property.Price | currency:'INR'}}</span> |
+      Area: <span class="font-highlight">{{property.BuiltArea}} Sq Ft </span> </h6>
+      <br />
+    <a *ngIf="!hideIcons" routerLink="/property-detail/{{property.Id}}" class="btn btn-primary">View Details</a>&nbsp;  <a href="#" *ngIf="!hideIcons" class="btn btn-primary">Purchase</a>
+  </div>
+</div>

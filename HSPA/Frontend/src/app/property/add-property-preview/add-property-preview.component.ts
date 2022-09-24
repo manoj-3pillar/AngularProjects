@@ -2,11 +2,11 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Property } from 'src/app/model/property';
 
 @Component({
-  selector: 'app-property-card',
-  templateUrl: './property-card.component.html',
-  styleUrls: ['./property-card.component.css']
+  selector: 'app-add-property-preview',
+  templateUrl: './add-property-preview.component.html',
+  styleUrls: ['./add-property-preview.component.css']
 })
-export class PropertyCardComponent implements OnInit {
+export class AddPropertyPreviewComponent implements OnInit {
 
   @Input() property: Property;
   @Input() hideIcons: boolean;

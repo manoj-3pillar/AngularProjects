@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { HousingService } from 'src/app/services/housing.service';
+import { Property } from 'src/app/model/property';
+import { IPropertyBase } from 'src/app/model/ipropertybase';
 
 @Component({
   selector: 'app-property-detail',
@@ -7,12 +10,25 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./property-detail.component.css']
 })
 export class PropertyDetailComponent implements OnInit {
-  public propertyId: number;
+public propertyId: number;
+property = new Property();
 
-  constructor(private route: ActivatedRoute) { }
+  constructor(private route: ActivatedRoute,
+              private router: Router,
+              private housingService: HousingService) { }
 
-  ngOnInit(): void {
-    this.propertyId = this.route.snapshot.params['id'];
+  ngOnInit() {
+    this.propertyId = +this.route.snapshot.params['id'];
+
+    this.route.params.subscribe(
+      (params) => {
+        this.propertyId = +params['id'];
+        this.housingService.getPropertyById(this.propertyId).subscribe(
+          (data?: Property) => {
+            this.property = data!;
+          }
+        );
+      }
+    );
   }
-
 }

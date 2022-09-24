@@ -1,0 +1,88 @@
+<div class="card shadow-lg">
+  <div class="img-wrapper">
+    <img *ngIf="property.ImgPath" src="../../../assets/images/{{property.Id}}.jpg" class="card-img-top" title={{property.Name}} alt={{property.Name}}>
+    <img *ngIf="!property.ImgPath" src="../../../assets/images/nopropertyimage.jpg" class="card-img-top" title={{property.Name}} alt="No property photo available">
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">{{property.Name}}</h5>
+    <div class="row">
+      <div class="col-lg-5 border">Sell/Rent</div>
+      <div class="col-lg-2 border">{{property.SellRent}}</div>
+      <div class="col-lg-3 border">BHK</div>
+      <div class="col-lg-2 border">{{property.BHK}}</div>
+    </div>
+    <div class="row">
+      <div class="col-lg-6 border">Property Type</div>
+      <div class="col-lg-6 border">{{property.PType}}</div>
+    </div>
+    <div class="row">
+      <div class="col-lg-6 border">Furnished Type</div>
+      <div class="col-lg-6 border">{{property.FType}}</div>
+    </div>
+    <div class="row">
+      <div class="col-lg-3 border">City</div>
+      <div class="col-lg-9 border">{{property.City}}</div>
+    </div>
+    <h6 class="card-title">Pricing & Area</h6>
+    <div class="row">
+      <div class="col-lg-6 border">Price</div>
+      <div class="col-lg-6 border">{{property.Price | currency:'INR'}}</div>
+    </div>
+    <div class="row">
+      <div class="col-lg-6 border">Security</div>
+      <div class="col-lg-6 border">{{property.Security| currency:'INR'}}</div>
+    </div>
+    <div class="row">
+      <div class="col-lg-6 border">Maintenance</div>
+      <div class="col-lg-6 border">{{property.Maintenance| currency:'INR'}}</div>
+    </div>
+    <div class="row">
+      <div class="col-lg-6 border">Built Area</div>
+      <div class="col-lg-6 border">{{property.BuiltArea}} Sqr Feet</div>
+    </div>
+    <div class="row">
+      <div class="col-lg-6 border">Carpet Area</div>
+      <div class="col-lg-6 border">{{property.CarpetArea}} Sqr Feet</div>
+    </div>
+    <h6 class="card-title">Address</h6>
+    <div class="row">
+      <div class="col-lg-3 border">Floor</div>
+      <div class="col-lg-2 border">{{property.FloorNo}}</div>
+      <div class="col-lg-5 border">Total Floor</div>
+      <div class="col-lg-2 border">{{property.TotalFloor}}</div>
+    </div>
+    <div class="row">
+      <div class="col-lg-4 border">Address</div>
+      <div class="col-lg-8 border">{{property.Address}}</div>
+    </div>
+    <div class="row">
+      <div class="col-lg-4 border">Landmark</div>
+      <div class="col-lg-8 border">{{property.Address2}}</div>
+    </div>
+    <h6 class="card-title">Other Details</h6>
+    <div class="row">
+      <div class="col-lg-6 border">Ready to Move</div>
+      <div class="col-lg-6 border">{{property.RTM}}</div>
+    </div>
+    <div class="row">
+      <div class="col-lg-6 border">Possession Date</div>
+      <div class="col-lg-6 border">{{property.Possession}}</div>
+    </div>
+    <div class="row">
+      <div class="col-lg-6 border">Age of Property</div>
+      <div class="col-lg-6 border">{{property.AOP}}</div>
+    </div>
+    <div class="row">
+      <div class="col-lg-6 border">Gated Community</div>
+      <div class="col-lg-6 border">{{property.Gated}}</div>
+    </div>
+    <div class="row">
+      <div class="col-lg-6 border">Main Enterance</div>
+      <div class="col-lg-6 border">{{property.MainEnterance}}</div>
+    </div>
+    <div class="row">
+      <div class="col-lg-12 border">Description: {{property.Description}}</div>
+    </div>
+    <a *ngIf="!hideIcons" routerLink="/property-preview/{{property.Id}}" class="btn btn-primary">View Details</a>&nbsp;  <a href="#" *ngIf="!hideIcons" class="btn btn-primary">Purchase</a>
+  </div>
+</div>

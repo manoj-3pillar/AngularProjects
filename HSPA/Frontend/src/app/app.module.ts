@@ -5,6 +5,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { TabsModule } from 'ngx-bootstrap/tabs';
+import { ButtonsModule } from 'ngx-bootstrap/buttons';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 
 import { AppComponent } from './app.component';
 import { PropertyCardComponent } from './property/property-card/property-card.component';
@@ -20,12 +22,14 @@ import { UserRegisterComponent } from './user/user-register/user-register.compon
 import { UserServiceService } from './services/user-service.service';
 import { AlertifyService } from './services/alertify.service';
 import { AuthService } from './services/auth.service';
+import { AddPropertyPreviewComponent } from './property/add-property-preview/add-property-preview.component';
 
 const appRoutes : Routes = [
   { path: '', component: PropertyListComponent},
   { path: 'rent-property', component: PropertyListComponent },
   { path: 'add-property', component: AddPropertyComponent},
   { path: 'property-detail/:id', component: PropertyDetailComponent},
+  { path: 'property-preview/:id', component: AddPropertyPreviewComponent},
   { path: 'user-login', component: UserLoginComponent},
   { path: 'user-registration', component: UserRegisterComponent},
   { path : '**', component: PageNotFoundComponent}
@@ -41,7 +45,8 @@ const appRoutes : Routes = [
     PropertyDetailComponent,
     PageNotFoundComponent,
     UserLoginComponent,
-    UserRegisterComponent
+    UserRegisterComponent,
+    AddPropertyPreviewComponent
    ],
 
   imports: [
@@ -52,7 +57,9 @@ const appRoutes : Routes = [
     RouterModule.forRoot(appRoutes),
     BrowserAnimationsModule,
     BsDropdownModule.forRoot(),
-    TabsModule.forRoot()
+    TabsModule.forRoot(),
+    ButtonsModule.forRoot(),
+    BsDatepickerModule.forRoot()
   ],
 
   providers: [
