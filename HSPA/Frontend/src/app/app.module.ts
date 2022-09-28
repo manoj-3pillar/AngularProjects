@@ -23,12 +23,15 @@ import { UserServiceService } from './services/user-service.service';
 import { AlertifyService } from './services/alertify.service';
 import { AuthService } from './services/auth.service';
 import { AddPropertyPreviewComponent } from './property/add-property-preview/add-property-preview.component';
+import { PropertyDetailResolverService } from './services/property-detail-resolver.service';
 
 const appRoutes : Routes = [
   { path: '', component: PropertyListComponent},
   { path: 'rent-property', component: PropertyListComponent },
   { path: 'add-property', component: AddPropertyComponent},
-  { path: 'property-detail/:id', component: PropertyDetailComponent},
+  { path: 'property-detail/:id',
+    component: PropertyDetailComponent,
+      resolve: {prp: PropertyDetailResolverService}},
   { path: 'property-preview/:id', component: AddPropertyPreviewComponent},
   { path: 'user-login', component: UserLoginComponent},
   { path: 'user-registration', component: UserRegisterComponent},
@@ -66,7 +69,8 @@ const appRoutes : Routes = [
     HousingService,
     UserServiceService,
     AlertifyService,
-    AuthService
+    AuthService,
+    PropertyDetailResolverService
   ],
   bootstrap: [AppComponent]
 })

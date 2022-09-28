@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { HousingService } from 'src/app/services/housing.service';
 import { Property } from 'src/app/model/property';
 import { IPropertyBase } from 'src/app/model/ipropertybase';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-property-detail',
@@ -19,6 +20,11 @@ property = new Property();
 
   ngOnInit() {
     this.propertyId = +this.route.snapshot.params['id'];
+    // this.route.data.subscribe(
+    //   (data?: Property) => {
+    //     this.property = data!;
+    //   }
+    // );
 
     this.route.params.subscribe(
       (params) => {
@@ -26,7 +32,7 @@ property = new Property();
         this.housingService.getPropertyById(this.propertyId).subscribe(
           (data?: Property) => {
             this.property = data!;
-          }
+          }, error => this.router.navigate(['**'])
         );
       }
     );
