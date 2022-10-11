@@ -24,6 +24,8 @@ import { AlertifyService } from './services/alertify.service';
 import { AuthService } from './services/auth.service';
 import { AddPropertyPreviewComponent } from './property/add-property-preview/add-property-preview.component';
 import { PropertyDetailResolverService } from './services/property-detail-resolver.service';
+import { FilterPipe } from './Pipes/filter.pipe';
+import { SortPipe } from './Pipes/sort.pipe';
 
 const appRoutes : Routes = [
   { path: '', component: PropertyListComponent},
@@ -49,7 +51,9 @@ const appRoutes : Routes = [
     PageNotFoundComponent,
     UserLoginComponent,
     UserRegisterComponent,
-    AddPropertyPreviewComponent
+    AddPropertyPreviewComponent,
+    FilterPipe,
+    SortPipe
    ],
 
   imports: [
