@@ -26,6 +26,13 @@ import { AddPropertyPreviewComponent } from './property/add-property-preview/add
 import { PropertyDetailResolverService } from './services/property-detail-resolver.service';
 import { FilterPipe } from './Pipes/filter.pipe';
 import { SortPipe } from './Pipes/sort.pipe';
+import { UserListComponent } from './user/user-list/user-list.component';
+import { StoreModule } from '@ngrx/store';
+import { reducers, metaReducers } from './reducers';
+import { EffectsModule } from '@ngrx/effects';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from '../environments/environment';
+import { UserEffects } from './user.effects';
 
 const appRoutes : Routes = [
   { path: '', component: PropertyListComponent},
@@ -37,6 +44,7 @@ const appRoutes : Routes = [
   { path: 'property-preview/:id', component: AddPropertyPreviewComponent},
   { path: 'user-login', component: UserLoginComponent},
   { path: 'user-registration', component: UserRegisterComponent},
+  { path: 'user-list', component: UserListComponent},
   { path : '**', component: PageNotFoundComponent}
 ];
 
@@ -53,7 +61,8 @@ const appRoutes : Routes = [
     UserRegisterComponent,
     AddPropertyPreviewComponent,
     FilterPipe,
-    SortPipe
+    SortPipe,
+    UserListComponent
    ],
 
   imports: [
@@ -66,7 +75,12 @@ const appRoutes : Routes = [
     BsDropdownModule.forRoot(),
     TabsModule.forRoot(),
     ButtonsModule.forRoot(),
-    BsDatepickerModule.forRoot()
+    BsDatepickerModule.forRoot(),
+    StoreModule.forRoot({}, {}),
+    StoreModule.forRoot(reducers, { metaReducers }),
+    StoreModule.forFeature('appUsers', reducers),
+    EffectsModule.forRoot([UserEffects]),
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production })
   ],
 
   providers: [

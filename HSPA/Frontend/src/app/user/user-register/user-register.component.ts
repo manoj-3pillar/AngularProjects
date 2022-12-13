@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { User } from 'src/app/model/user';
+import { IUser } from 'src/app/model/user';
 import { AlertifyService } from 'src/app/services/alertify.service';
 import { UserServiceService } from 'src/app/services/user-service.service';
 import CustomValidation from 'src/app/shared/utilities/customValidation';
@@ -15,7 +15,7 @@ import CustomValidation from 'src/app/shared/utilities/customValidation';
 export class UserRegisterComponent implements OnInit {
 
   registerationForm: FormGroup;
-  user: User;
+  user: IUser;
   submitted = false;
 
   constructor(private fb: FormBuilder, private userService: UserServiceService, private alertifyService: AlertifyService) {}
@@ -49,7 +49,7 @@ export class UserRegisterComponent implements OnInit {
     });
   }
 
-  mapUserData() : User {
+  mapUserData() : IUser {
     return this.user = {
       fullname: this.fullname.value,
       email: this.email.value,
